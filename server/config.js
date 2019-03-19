@@ -8,10 +8,10 @@ config.web.encryption_key = 's3cret';
 // database configs - dev
 config.database = {};
 config.database.username = 'admin';
-config.database.password = 'admin';
-config.database.port = '1234';
-config.database.url = 'database.url';
-config.database.name = 'database.name';
+config.database.password = 'nodequiz1';
+config.database.port = '17866';
+config.database.url = 'ds117866.mlab.com';
+config.database.name = 'nodequiz';
 
 
 module.exports = config;
