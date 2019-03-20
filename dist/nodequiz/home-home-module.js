@@ -73,8 +73,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
 /* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
-/* harmony import */ var _session_user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../session/user.service */ "./src/app/session/user.service.ts");
-
 
 
 
@@ -91,9 +89,6 @@ var HomeModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_5__["HomeRoutes"]),
-            ],
-            providers: [
-                _session_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"]
             ]
         })
     ], HomeModule);
@@ -155,7 +150,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  quiz-selection works!\n</p>\n"
+module.exports = "<p>\n  {{ user.firstName }}\n</p>\n"
 
 /***/ }),
 
@@ -178,14 +173,10 @@ __webpack_require__.r(__webpack_exports__);
 var QuizSelectionComponent = /** @class */ (function () {
     function QuizSelectionComponent(userService) {
         this.userService = userService;
-        this.user = {
-            next: function (x) { return console.log(x); },
-            error: function (err) { return console.error(err); },
-            complete: function () { return console.log("complete"); }
-        };
     }
     QuizSelectionComponent.prototype.ngOnInit = function () {
-        this.userService.getUser().subscribe(this.user);
+        this.user = this.userService.getUser();
+        console.log(this.user);
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
