@@ -1,3 +1,47 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <mat-card>
+    <mat-card-title>User Login</mat-card-title>
+    <mat-divider inset></mat-divider>
+    
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput formControlName="userId" placeholder="User ID" />
+          </mat-form-field>
+          <div
+            class="error-alert"
+            *ngIf="form.controls.userId.invalid && (form.controls.userId.dirty || form.controls.userId.touched)"
+          >
+            <div
+              *ngIf="form.controls.userId.errors.required"
+            >
+              User ID is required.
+            </div>
+            <div
+              *ngIf="form.controls.userId.errors.minlength"
+            >
+              User ID must be at least 5 characters.
+            </div>
+            <div
+              *ngIf="form.controls.userId.errors.pattern"
+            >
+              User ID can only contain numbers.
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid || !form.valid"
+          >
+            Submit
+          </button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</div>

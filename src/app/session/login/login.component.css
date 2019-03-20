@@ -1,0 +1,30 @@
+.container {
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 350px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-content {
+    margin-top: 20px;
+}
+
+mat-card-actions {
+    text-align: right;
+    margin: unset;
+    padding: unset;
+}
+
+.error-alert {
+    color: #f44336;
+}
