@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { SessionRoutes } from './session.routing';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundComponent, LoginComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(SessionRoutes),
