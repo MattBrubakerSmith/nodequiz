@@ -36,13 +36,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/session/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(userService) {
+    function LoginComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             'userId': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
@@ -50,15 +53,10 @@ var LoginComponent = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[0-9]*$/)
             ])
         });
-        this.user = {
-            next: function (x) { return console.log(x); },
-            error: function (err) { return console.error(err); },
-            complete: function () { return console.log("complete"); }
-        };
     }
     LoginComponent.prototype.onSubmit = function () {
         this.userService.loginUser(this.form.controls.userId.value);
-        this.userService.getUser().subscribe(this.user);
+        this.router.navigate(["/quizzes"]);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -66,7 +64,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/session/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/session/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -223,45 +221,6 @@ var SessionRoutes = [
         ]
     }
 ];
-
-
-/***/ }),
-
-/***/ "./src/app/session/user.service.ts":
-/*!*****************************************!*\
-  !*** ./src/app/session/user.service.ts ***!
-  \*****************************************/
-/*! exports provided: UserService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-var UserService = /** @class */ (function () {
-    function UserService(http) {
-        this.http = http;
-    }
-    UserService.prototype.loginUser = function (userId) {
-        this.user$ = this.http.post("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
-    };
-    UserService.prototype.getUser = function () {
-        return this.user$;
-    };
-    UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], UserService);
-    return UserService;
-}());
-
 
 
 /***/ })

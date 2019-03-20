@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,16 +17,10 @@ export class LoginComponent {
     ])
   });
 
-  private user = {
-    next: x => console.log(x),
-    error: err => console.error(err),
-    complete: () => console.log("complete")
-  }
-
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   onSubmit() {
     this.userService.loginUser(this.form.controls.userId.value);
-    this.userService.getUser().subscribe(this.user);
+    this.router.navigate(["/quizzes"]);
   }
 }

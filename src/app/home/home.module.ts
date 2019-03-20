@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 import { HomeRoutes } from './home.routing';
+import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, QuizSelectionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
