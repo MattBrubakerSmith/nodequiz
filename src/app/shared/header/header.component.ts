@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-header',
@@ -8,9 +7,6 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class HeaderComponent {
 
-  constructor(public loginDialog: MatDialog) { }
+  constructor() { }
 
-  openLoginDialog(): void {
-    // Open 
-  }
 }
