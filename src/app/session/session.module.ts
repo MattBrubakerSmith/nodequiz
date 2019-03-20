@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { SessionRoutes } from './session.routing';
 import { LoginComponent } from './login/login.component';
+import { UserService } from "./user.service";
 
 @NgModule({
   declarations: [NotFoundComponent, LoginComponent],
@@ -23,6 +24,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(SessionRoutes),
+  ],
+  providers: [
+    UserService
   ]
 })
 export class SessionModule { }

@@ -5,12 +5,13 @@
     "ng": "ng",
     "start": "ng build && node ./server/app.js",
     "start-ui": "ng serve",
-    "start-api": "nodemon ./server/app.js",
+    "start-api": "node ./server/app.js",
+    "start-api-nodemon": "nodemon ./server/app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "concurrently \"npm run start-ui\" \"npm run start-api\""
+    "dev": "concurrently \"npm run start-ui\" \"npm run start-api-nodemon\""
   },
   "private": true,
   "dependencies": {

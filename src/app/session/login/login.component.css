@@ -25,6 +25,6 @@ mat-card-actions {
     padding: unset;
 }
 
-.error-alert {
+.error {
     color: #f44336;
 }
