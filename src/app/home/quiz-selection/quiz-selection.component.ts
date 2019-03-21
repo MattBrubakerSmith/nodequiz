@@ -10,11 +10,9 @@ import { User } from "../../session/user";
 export class QuizSelectionComponent implements OnInit {
   private user: User;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.user = this.userService.getUser();
-    console.log(this.user);
+    this.userService.getUser().subscribe(data => this.user = data as User);
   }
-
 }

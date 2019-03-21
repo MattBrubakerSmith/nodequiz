@@ -8,14 +8,14 @@ import { LOCAL_STORAGE, StorageService } from "ngx-webstorage-service";
   providedIn: 'root'
 })
 export class UserService {
-  private user$: Observable<User>;
-  private STORAGE_KEY = "nodequiz_user";
+  private userData$: Observable<User>;
+  private storageKey = "nodequiz_user";
 
   constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
   public loginUser(userId: String) {
-    this.user$ = this.http.post<User>("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
-    this.user$.subscribe(data => {
+    this.userData$ = this.http.post<User>("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
+    this.userData$.subscribe(data => {
       this.storeInLocalStorage(data as User);
       console.log(data);
     }, err => {
@@ -24,10 +24,15 @@ export class UserService {
   }
 
   private storeInLocalStorage(user: User) {
-    this.storage.set(this.STORAGE_KEY, user);
+    this.storage.set(this.storageKey, user);
   }
 
-  public getUser(): User {
-    return this.storage.get(this.STORAGE_KEY) as User;
+  public getUser(): Observable<User> {
+    return new Observable(user => {
+      setInterval(() => {
+        user.next(this.storage.get(this.storageKey) as User),
+        1000
+      });
+    });
   }
 }
