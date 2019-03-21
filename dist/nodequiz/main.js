@@ -10,12 +10,12 @@
 var map = {
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
-		"common",
+		"default~home-home-module~session-session-module",
 		"home-home-module"
 	],
 	"./session/session.module": [
 		"./src/app/session/session.module.ts",
-		"common",
+		"default~home-home-module~session-session-module",
 		"session-session-module"
 	]
 };

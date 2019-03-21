@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatDividerModule } from '@angular/material';
+import { StorageServiceModule } from "ngx-webstorage-service";
 
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -23,6 +24,7 @@ import { UserService } from "./user.service";
     MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
+    StorageServiceModule,
     RouterModule.forChild(SessionRoutes),
   ],
   providers: [

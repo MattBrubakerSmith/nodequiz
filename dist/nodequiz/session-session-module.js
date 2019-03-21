@@ -18,7 +18,7 @@ module.exports = ".container {\r\n    width: calc(100vw - 16px);\r\n    height: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-card>\n    <mat-card-title>User Login</mat-card-title>\n    <mat-divider inset></mat-divider>\n    \n      <form\n        [formGroup]=\"form\"\n        (ngSubmit)=\"onSubmit()\"\n      >\n        <mat-card-content>\n          <mat-form-field>\n            <input matInput formControlName=\"userId\" placeholder=\"User ID\" />\n          </mat-form-field>\n          <div\n            class=\"error\"\n            *ngIf=\"form.controls.userId.invalid && (form.controls.userId.dirty || form.controls.userId.touched)\"\n          >\n            <div\n              *ngIf=\"form.controls.userId.errors.required\"\n            >\n              User ID is required.\n            </div>\n            <div\n              *ngIf=\"form.controls.userId.errors.minlength\"\n            >\n              User ID must be at least 5 characters.\n            </div>\n            <div\n              *ngIf=\"form.controls.userId.errors.pattern\"\n            >\n              User ID can only contain numbers.\n            </div>\n          </div>\n        </mat-card-content>\n        <mat-card-actions>\n          <button\n            mat-raised-button\n            color=\"primary\"\n            type=\"submit\"\n            [disabled]=\"form.invalid || !form.valid\"\n          >\n            Submit\n          </button>\n        </mat-card-actions>\n      </form>\n  </mat-card>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <mat-card>\r\n    <mat-card-title>User Login</mat-card-title>\r\n    <mat-divider inset></mat-divider>\r\n    \r\n      <form\r\n        [formGroup]=\"form\"\r\n        (ngSubmit)=\"onSubmit()\"\r\n      >\r\n        <mat-card-content>\r\n          <mat-form-field>\r\n            <input matInput formControlName=\"userId\" placeholder=\"User ID\" />\r\n          </mat-form-field>\r\n          <div\r\n            class=\"error\"\r\n            *ngIf=\"form.controls.userId.invalid && (form.controls.userId.dirty || form.controls.userId.touched)\"\r\n          >\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.required\"\r\n            >\r\n              User ID is required.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.minlength\"\r\n            >\r\n              User ID must be at least 5 characters.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.pattern\"\r\n            >\r\n              User ID can only contain numbers.\r\n            </div>\r\n          </div>\r\n        </mat-card-content>\r\n        <mat-card-actions>\r\n          <button\r\n            mat-raised-button\r\n            color=\"primary\"\r\n            type=\"submit\"\r\n            [disabled]=\"form.invalid || !form.valid\"\r\n          >\r\n            Submit\r\n          </button>\r\n        </mat-card-actions>\r\n      </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -142,10 +142,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/session/not-found/not-found.component.ts");
-/* harmony import */ var _session_routing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session.routing */ "./src/app/session/session.routing.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.component */ "./src/app/session/login/login.component.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user.service */ "./src/app/session/user.service.ts");
+/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/session/not-found/not-found.component.ts");
+/* harmony import */ var _session_routing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./session.routing */ "./src/app/session/session.routing.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/session/login/login.component.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user.service */ "./src/app/session/user.service.ts");
+
 
 
 
@@ -162,7 +164,7 @@ var SessionModule = /** @class */ (function () {
     }
     SessionModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"]],
+            declarations: [_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
@@ -173,10 +175,11 @@ var SessionModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_session_routing__WEBPACK_IMPORTED_MODULE_8__["SessionRoutes"]),
+                ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_7__["StorageServiceModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_session_routing__WEBPACK_IMPORTED_MODULE_9__["SessionRoutes"]),
             ],
             providers: [
-                _user_service__WEBPACK_IMPORTED_MODULE_10__["UserService"]
+                _user_service__WEBPACK_IMPORTED_MODULE_11__["UserService"]
             ]
         })
     ], SessionModule);
