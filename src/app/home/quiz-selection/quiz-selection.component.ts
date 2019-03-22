@@ -13,6 +13,6 @@ export class QuizSelectionComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.getUser().subscribe(data => this.user = data as User);
+    this.user = this.userService.getUser();
   }
 }

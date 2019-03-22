@@ -951,50 +951,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
-
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
 
 
 
 
 var UserService = /** @class */ (function () {
-    function UserService(http, storage, router) {
+    function UserService(http, storage) {
         this.http = http;
         this.storage = storage;
-        this.router = router;
         this.storageKey = "nodequiz_user";
     }
-    UserService.prototype.loginUser = function (userId) {
+    UserService.prototype.loginUser = function (loginComponent, userId) {
         var _this = this;
         this.userData$ = this.http.post("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
         this.userData$.subscribe({
-            next: function (data) { return _this.storeInLocalStorage(data); },
-            error: function (err) { return console.error(err); },
-            complete: function () { return console.log("DUN"); } //this.router.navigate(["/quizzes"]) 
+            next: function (data) {
+                console.log(data);
+                _this.storeInLocalStorage(data);
+                loginComponent.confirmLogin(true);
+            },
+            error: function (err) {
+                console.error(err);
+                loginComponent.confirmLogin(false);
+            }
         });
     };
     UserService.prototype.storeInLocalStorage = function (user) {
         this.storage.set(this.storageKey, user);
     };
     UserService.prototype.getUser = function () {
-        var _this = this;
-        return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (user) {
-            setInterval(function () {
-                user.next(_this.storage.get(_this.storageKey)),
-                    1000;
-            });
-        });
+        return this.storage.get(this.storageKey);
     };
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["LOCAL_STORAGE"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], Object, _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_3__["LOCAL_STORAGE"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], Object])
     ], UserService);
     return UserService;
 }());

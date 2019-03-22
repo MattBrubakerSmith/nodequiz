@@ -31,6 +31,12 @@
               User ID can only contain numbers.
             </div>
           </div>
+          <div
+            class="error"
+            *ngIf="attemptFailed"
+          >
+            The User ID you entered does not match any records. Please try again.
+          </div>
         </mat-card-content>
         <mat-card-actions>
           <button

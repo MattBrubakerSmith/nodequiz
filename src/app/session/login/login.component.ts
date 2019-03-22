@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,20 @@ export class LoginComponent {
       Validators.pattern(/^[0-9]*$/)
     ])
   });
+  private attemptFailed: Boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  onSubmit() {
-    this.userService.loginUser(this.form.controls.userId.value);
+  private onSubmit() {
+    this.userService.loginUser(this, this.form.controls.userId.value);
+  }
+
+  public confirmLogin(success: Boolean) {
+    if(success) {
+      this.router.navigate(["/quizzes"]);
+    }
+    else {
+      this.attemptFailed = true;
+    }
   }
 }

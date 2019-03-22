@@ -18,7 +18,7 @@ module.exports = ".container {\r\n    width: calc(100vw - 16px);\r\n    height: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <mat-card>\r\n    <mat-card-title>User Login</mat-card-title>\r\n    <mat-divider inset></mat-divider>\r\n    \r\n      <form\r\n        [formGroup]=\"form\"\r\n        (ngSubmit)=\"onSubmit()\"\r\n      >\r\n        <mat-card-content>\r\n          <mat-form-field>\r\n            <input matInput formControlName=\"userId\" placeholder=\"User ID\" />\r\n          </mat-form-field>\r\n          <div\r\n            class=\"error\"\r\n            *ngIf=\"form.controls.userId.invalid && (form.controls.userId.dirty || form.controls.userId.touched)\"\r\n          >\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.required\"\r\n            >\r\n              User ID is required.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.minlength\"\r\n            >\r\n              User ID must be at least 5 characters.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.pattern\"\r\n            >\r\n              User ID can only contain numbers.\r\n            </div>\r\n          </div>\r\n        </mat-card-content>\r\n        <mat-card-actions>\r\n          <button\r\n            mat-raised-button\r\n            color=\"primary\"\r\n            type=\"submit\"\r\n            [disabled]=\"form.invalid || !form.valid\"\r\n          >\r\n            Submit\r\n          </button>\r\n        </mat-card-actions>\r\n      </form>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <mat-card>\r\n    <mat-card-title>User Login</mat-card-title>\r\n    <mat-divider inset></mat-divider>\r\n    \r\n      <form\r\n        [formGroup]=\"form\"\r\n        (ngSubmit)=\"onSubmit()\"\r\n      >\r\n        <mat-card-content>\r\n          <mat-form-field>\r\n            <input matInput formControlName=\"userId\" placeholder=\"User ID\" />\r\n          </mat-form-field>\r\n          <div\r\n            class=\"error\"\r\n            *ngIf=\"form.controls.userId.invalid && (form.controls.userId.dirty || form.controls.userId.touched)\"\r\n          >\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.required\"\r\n            >\r\n              User ID is required.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.minlength\"\r\n            >\r\n              User ID must be at least 5 characters.\r\n            </div>\r\n            <div\r\n              *ngIf=\"form.controls.userId.errors.pattern\"\r\n            >\r\n              User ID can only contain numbers.\r\n            </div>\r\n          </div>\r\n          <div\r\n            class=\"error\"\r\n            *ngIf=\"attemptFailed\"\r\n          >\r\n            The User ID you entered does not match any records. Please try again.\r\n          </div>\r\n        </mat-card-content>\r\n        <mat-card-actions>\r\n          <button\r\n            mat-raised-button\r\n            color=\"primary\"\r\n            type=\"submit\"\r\n            [disabled]=\"form.invalid || !form.valid\"\r\n          >\r\n            Submit\r\n          </button>\r\n        </mat-card-actions>\r\n      </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -36,13 +36,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/session/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(userService) {
+    function LoginComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             'userId': new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
@@ -50,18 +53,18 @@ var LoginComponent = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[0-9]*$/)
             ])
         });
+        this.attemptFailed = false;
     }
     LoginComponent.prototype.onSubmit = function () {
-        var _this = this;
-        this.userService.loginUser(this.form.controls.userId.value);
-        window.setTimeout(function () {
-            if (_this.userService.getUser() != null) {
-                console.log("YEP");
-            }
-            else {
-                console.log("NOPE");
-            }
-        }, 1000);
+        this.userService.loginUser(this, this.form.controls.userId.value);
+    };
+    LoginComponent.prototype.confirmLogin = function (success) {
+        if (success) {
+            this.router.navigate(["/quizzes"]);
+        }
+        else {
+            this.attemptFailed = true;
+        }
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -69,7 +72,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/session/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/session/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());

@@ -175,8 +175,7 @@ var QuizSelectionComponent = /** @class */ (function () {
         this.userService = userService;
     }
     QuizSelectionComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.userService.getUser().subscribe(function (data) { return _this.user = data; });
+        this.user = this.userService.getUser();
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
