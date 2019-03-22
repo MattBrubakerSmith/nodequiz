@@ -7,17 +7,11 @@ const router = express.Router();
  * @desc    User login
  * @access  Public
  */
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
     User.getByUserId(req.body.userId, (err, user) => {
-        if(err) {
-            return res.status(500).send("There was an error logging in the user.");
-        }
-
-        if(!user) {
-            return res.status(404).send("No user found.");
-        }
-
-        res.status(200).send(user);
+        if(err) return next(err);
+        if(!user) return next("No user found.");
+        res.json(user);
     });
 });
 

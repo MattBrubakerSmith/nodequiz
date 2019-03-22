@@ -172,12 +172,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var QuizSelectionComponent = /** @class */ (function () {
     function QuizSelectionComponent(userService) {
-        var _this = this;
         this.userService = userService;
-        this.userService.getUser().subscribe(function (data) { return _this.user = data; });
     }
     QuizSelectionComponent.prototype.ngOnInit = function () {
-        //this.user$ = this.userService.getUser();
+        var _this = this;
+        this.userService.getUser().subscribe(function (data) { return _this.user = data; });
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

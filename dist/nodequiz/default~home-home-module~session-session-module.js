@@ -954,35 +954,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-webstorage-service */ "./node_modules/ngx-webstorage-service/fesm5/ngx-webstorage-service.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 
 var UserService = /** @class */ (function () {
-    function UserService(http, storage) {
+    function UserService(http, storage, router) {
         this.http = http;
         this.storage = storage;
-        this.STORAGE_KEY = "nodequiz_user";
+        this.router = router;
+        this.storageKey = "nodequiz_user";
     }
     UserService.prototype.loginUser = function (userId) {
         var _this = this;
         this.userData$ = this.http.post("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
-        this.userData$.subscribe(function (data) {
-            _this.storeInLocalStorage(data);
-            console.log(data);
-        }, function (err) {
-            console.log(err);
+        this.userData$.subscribe({
+            next: function (data) { return _this.storeInLocalStorage(data); },
+            error: function (err) { return console.error(err); },
+            complete: function () { return console.log("DUN"); } //this.router.navigate(["/quizzes"]) 
         });
     };
     UserService.prototype.storeInLocalStorage = function (user) {
-        this.storage.set(this.STORAGE_KEY, user);
+        this.storage.set(this.storageKey, user);
     };
     UserService.prototype.getUser = function () {
         var _this = this;
-        return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+        return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (user) {
             setInterval(function () {
-                observer.next(_this.storage.get(_this.STORAGE_KEY)),
+                user.next(_this.storage.get(_this.storageKey)),
                     1000;
             });
         });
@@ -992,7 +994,7 @@ var UserService = /** @class */ (function () {
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(ngx_webstorage_service__WEBPACK_IMPORTED_MODULE_4__["LOCAL_STORAGE"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], Object, _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], UserService);
     return UserService;
 }());

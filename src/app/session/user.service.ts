@@ -3,6 +3,7 @@ import { User } from "./user";
 import { Observable } from "rxjs";
 import { HttpClient } from '@angular/common/http';
 import { LOCAL_STORAGE, StorageService } from "ngx-webstorage-service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,14 @@ export class UserService {
   private userData$: Observable<User>;
   private storageKey = "nodequiz_user";
 
-  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: StorageService) { }
+  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: StorageService, private router: Router) { }
 
   public loginUser(userId: String) {
     this.userData$ = this.http.post<User>("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
-    this.userData$.subscribe(data => {
-      this.storeInLocalStorage(data as User);
-      console.log(data);
-    }, err => {
-      console.log(err);
+    this.userData$.subscribe({
+      next: data => this.storeInLocalStorage(data as User),
+      error: err => console.error(err),
+      complete: () => this.router.navigate(["/quizzes"]) 
     });
   }
 
