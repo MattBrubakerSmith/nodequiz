@@ -263,7 +263,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <header>\r\n    <app-header></app-header>\r\n  </header>\r\n\r\n  <main fxLayout=\"column\">\r\n    <router-outlet></router-outlet>\r\n  </main>\r\n\r\n  <footer>\r\n    <app-footer></app-footer>\r\n  </footer>\r\n\r\n</div>\r\n"
+module.exports = "<div>\r\n  <header fxLayout=\"row\">\r\n    <app-header style=\"width: 100%; margin-bottom: 5px;\"></app-header>\r\n  </header>\r\n\r\n  <main fxLayout=\"column\">\r\n    <router-outlet></router-outlet>\r\n  </main>\r\n\r\n  <footer>\r\n    <app-footer></app-footer>\r\n  </footer>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -501,7 +501,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matthew\Documents\Adobe\Adobe Media Encoder\9.0\ArchivedWorkspaces\nodequiz\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Smaft\Documents\Projects\Bootcamp\nodequiz\src\main.ts */"./src/main.ts");
 
 
 /***/ })

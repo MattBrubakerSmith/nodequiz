@@ -70,9 +70,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
-/* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
+/* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
+
+
 
 
 
@@ -85,10 +89,13 @@ var HomeModule = /** @class */ (function () {
     }
     HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_6__["QuizSelectionComponent"]],
+            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_8__["QuizSelectionComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_5__["HomeRoutes"]),
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
+                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_5__["FlexLayoutModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_7__["HomeRoutes"]),
             ]
         })
     ], HomeModule);
@@ -139,7 +146,7 @@ var HomeRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei1zZWxlY3Rpb24vcXVpei1zZWxlY3Rpb24uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "mat-card {\r\n    max-width: 800px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9xdWl6LXNlbGVjdGlvbi9xdWl6LXNlbGVjdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9xdWl6LXNlbGVjdGlvbi9xdWl6LXNlbGVjdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibWF0LWNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiA4MDBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -150,7 +157,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  {{ user.firstName }}\r\n</p>\r\n"
+module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        mat-raised-button\r\n        color=\"green\"\r\n      >\r\n        Quiz\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 

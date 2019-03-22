@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matthew\Documents\Adobe\Adobe Media Encoder\9.0\ArchivedWorkspaces\nodequiz\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\Smaft\Documents\Projects\Bootcamp\nodequiz\src\styles.css */"./src/styles.css");
 
 
 /***/ })
