@@ -22,15 +22,13 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   private onSubmit() {
-    this.userService.loginUser(this, this.form.controls.userId.value);
-  }
-
-  public confirmLogin(success: Boolean) {
-    if(success) {
-      this.router.navigate(["/quizzes"]);
-    }
-    else {
-      this.attemptFailed = true;
-    }
+    this.userService.loginUser(this.form.controls.userId.value, (success: Boolean) => {
+      if(success) {
+        this.router.navigate(["/quizzes"]);
+      }
+      else {
+        this.attemptFailed = true;
+      }
+    });
   }
 }

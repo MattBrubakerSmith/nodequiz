@@ -963,18 +963,18 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.storageKey = "nodequiz_user";
     }
-    UserService.prototype.loginUser = function (loginComponent, userId) {
+    UserService.prototype.loginUser = function (userId, callback) {
         var _this = this;
         this.userData$ = this.http.post("/api/users", { userId: userId }, { headers: { 'Content-Type': 'application/json' } });
         this.userData$.subscribe({
             next: function (data) {
                 console.log(data);
                 _this.storeInLocalStorage(data);
-                loginComponent.confirmLogin(true);
+                callback(true);
             },
             error: function (err) {
                 console.error(err);
-                loginComponent.confirmLogin(false);
+                callback(false);
             }
         });
     };

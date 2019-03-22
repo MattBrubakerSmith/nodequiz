@@ -56,15 +56,15 @@ var LoginComponent = /** @class */ (function () {
         this.attemptFailed = false;
     }
     LoginComponent.prototype.onSubmit = function () {
-        this.userService.loginUser(this, this.form.controls.userId.value);
-    };
-    LoginComponent.prototype.confirmLogin = function (success) {
-        if (success) {
-            this.router.navigate(["/quizzes"]);
-        }
-        else {
-            this.attemptFailed = true;
-        }
+        var _this = this;
+        this.userService.loginUser(this.form.controls.userId.value, function (success) {
+            if (success) {
+                _this.router.navigate(["/quizzes"]);
+            }
+            else {
+                _this.attemptFailed = true;
+            }
+        });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
