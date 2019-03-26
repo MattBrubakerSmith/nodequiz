@@ -181,7 +181,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  {{ slug }} presentation works!\n</p>\n"
+module.exports = "<div>\n  <video controls reload=\"none\">\n    <source src=\"{{'../../../assets/presentations/' + slug + '.mp4'}}\" />\n  </video>\n</div>"
 
 /***/ }),
 
@@ -204,10 +204,8 @@ __webpack_require__.r(__webpack_exports__);
 var PresentationComponent = /** @class */ (function () {
     function PresentationComponent(route) {
         this.route = route;
-    }
-    PresentationComponent.prototype.ngOnInit = function () {
         this.slug = this.route.snapshot.paramMap.get("slug");
-    };
+    }
     PresentationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-presentation',
@@ -378,7 +376,7 @@ __webpack_require__.r(__webpack_exports__);
 var QuizComponent = /** @class */ (function () {
     function QuizComponent(route) {
         this.route = route;
-        this.slug = route.snapshot.paramMap.get("slug");
+        this.slug = this.route.snapshot.paramMap.get("slug");
     }
     QuizComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
