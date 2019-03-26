@@ -11,9 +11,10 @@ import { HomeRoutes } from './home.routing';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { QuizService } from './quiz.service';
 import { PresentationComponent } from './presentation/presentation.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
-  declarations: [HomeComponent, QuizSelectionComponent, PresentationComponent],
+  declarations: [HomeComponent, QuizSelectionComponent, PresentationComponent, QuizComponent],
   imports: [
     CommonModule,
     HttpClientModule,
