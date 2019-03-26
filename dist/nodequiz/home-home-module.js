@@ -165,7 +165,7 @@ module.exports = "mat-card {\r\n    max-width: 800px;\r\n}\r\n/*# sourceMappingU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        mat-raised-button\r\n        color=\"green\"\r\n      >\r\n        Quiz\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>\r\n\r\n<div>\r\n  {{ quizzes[0].title }}\r\n</div>"
+module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        *ngFor=\"let quiz of quizzes\"\r\n        mat-raised-button\r\n        [ngClass]=\"quiz.slug + '-btn'\"\r\n        [routerLink]=\"'/presentations/' + quiz.slug\"\r\n      >\r\n        {{ quiz.title }}\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 
