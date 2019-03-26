@@ -11,14 +11,19 @@
           <source src="{{'../../../assets/presentations/' + slug + '.mp4'}}" />
         </video>
       </mat-card-content>
-    </mat-card>
-    <mat-card-actions>
-      <button
-        mat-button
-        [ngClass]="slug + '-bg'"
+      <mat-card-actions
+        fxLayout="row"
+        fxLayoutAlign="center start"
       >
-        Begin Quiz
-      </button>
-    </mat-card-actions>
+        <button
+          mat-button
+          class="quiz-btn"
+          [ngClass]="slug + '-bg'"
+          [routerLink]="'/quizzes/' + slug"
+        >
+          Begin Quiz
+        </button>
+      </mat-card-actions>
+    </mat-card>
   <div fxFlex></div>
 </div>

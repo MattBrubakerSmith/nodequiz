@@ -23,3 +23,15 @@
 .devops-color {
     color: indigo;
 }
+
+.quiz-btn {
+    color: rgba(255,255,255,0.8);
+    transition: color 100ms ease-in-out;
+    -webkit-transition: color 100ms ease-in-out;
+    -moz-transition: color 100ms ease-in-out;
+    -o-transition: color 100ms ease-in-out;
+}
+
+.quiz-btn:hover {
+    color: white;
+}
