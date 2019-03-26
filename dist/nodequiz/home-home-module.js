@@ -254,9 +254,6 @@ var QuizSelectionComponent = /** @class */ (function () {
         var _this = this;
         this.user = this.userService.getUser();
         this.quizService.getAllQuizzes(function (quizzes) { return _this.quizzes = quizzes; });
-        this.quizService.getQuizBySlug("devops", function (quiz) {
-            console.log(quiz);
-        });
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -297,24 +294,16 @@ var QuizService = /** @class */ (function () {
         var quizzes$;
         quizzes$ = this.http.get("/api/quizzes");
         quizzes$.subscribe({
-            next: function (data) {
-                callback(data);
-            },
-            error: function (err) {
-                console.error(err);
-            }
+            next: function (data) { return callback(data); },
+            error: function (err) { return console.error(err); }
         });
     };
     QuizService.prototype.getQuizBySlug = function (slug, callback) {
         var quiz$;
         quiz$ = this.http.get("/api/quizzes/" + slug);
         quiz$.subscribe({
-            next: function (data) {
-                callback(data);
-            },
-            error: function (err) {
-                console.error(err);
-            }
+            next: function (data) { return callback(data); },
+            error: function (err) { return console.error(err); }
         });
     };
     QuizService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

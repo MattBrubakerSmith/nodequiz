@@ -222,12 +222,16 @@ var SessionRoutes = [
         path: '',
         children: [
             {
-                path: '404',
-                component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"]
+                path: '',
+                component: _login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"]
             },
             {
                 path: 'login',
                 component: _login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"]
+            },
+            {
+                path: '404',
+                component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"]
             }
         ]
     }

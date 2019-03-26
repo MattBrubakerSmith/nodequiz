@@ -375,7 +375,7 @@ module.exports = ".login-btn {\r\n    float: right;\r\n}\r\n/*# sourceMappingURL
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a\r\n  class=\"login-btn\"\r\n  mat-button\r\n  routerLink=\"/session/login\"\r\n>\r\n  User Login\r\n</a>"
+module.exports = "<a\r\n  class=\"login-btn\"\r\n  mat-button\r\n  routerLink=\"/session\"\r\n>\r\n  User Login\r\n</a>"
 
 /***/ }),
 
