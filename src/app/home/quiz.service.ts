@@ -26,4 +26,13 @@ export class QuizService {
       error: err => console.error(err)
     });
   }
+
+  public getQuizDescriptionBySlug(slug: String, callback: Function) {
+    let quiz$: Observable<Quiz>;
+    quiz$ = this.http.get("/api/quizzes/description/" + slug) as Observable<Quiz>;
+    quiz$.subscribe({
+      next: data => callback(data as Quiz),
+      error: err => console.error(err)
+    });
+  }
 }
