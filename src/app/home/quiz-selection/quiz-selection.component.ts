@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/session/user.service';
 import { User } from "../../session/user";
+import { QuizService } from '../quiz.service';
+import { Quiz } from '../quiz';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -9,10 +11,14 @@ import { User } from "../../session/user";
 })
 export class QuizSelectionComponent implements OnInit {
   private user: User;
+  private quizzes: [Quiz];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private quizService: QuizService) {}
 
   ngOnInit() {
     this.user = this.userService.getUser();
+    this.quizService.getAllQuizzes((err, quizzes) => {
+      this.quizzes = quizzes;
+    });
   }
 }

@@ -70,11 +70,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
-/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
-/* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
+/* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
+/* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./quiz.service */ "./src/app/home/quiz.service.ts");
+
+
 
 
 
@@ -89,13 +93,17 @@ var HomeModule = /** @class */ (function () {
     }
     HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_8__["QuizSelectionComponent"]],
+            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__["QuizSelectionComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
-                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_5__["FlexLayoutModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_7__["HomeRoutes"]),
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_8__["HomeRoutes"]),
+            ],
+            providers: [
+                _quiz_service__WEBPACK_IMPORTED_MODULE_10__["QuizService"]
             ]
         })
     ], HomeModule);
@@ -157,7 +165,7 @@ module.exports = "mat-card {\r\n    max-width: 800px;\r\n}\r\n/*# sourceMappingU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        mat-raised-button\r\n        color=\"green\"\r\n      >\r\n        Quiz\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        mat-raised-button\r\n        color=\"green\"\r\n      >\r\n        Quiz\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>\r\n\r\n<div>\r\n  {{ quizzes[0].title }}\r\n</div>"
 
 /***/ }),
 
@@ -174,15 +182,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_session_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/session/user.service */ "./src/app/session/user.service.ts");
+/* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quiz.service */ "./src/app/home/quiz.service.ts");
+
 
 
 
 var QuizSelectionComponent = /** @class */ (function () {
-    function QuizSelectionComponent(userService) {
+    function QuizSelectionComponent(userService, quizService) {
         this.userService = userService;
+        this.quizService = quizService;
     }
     QuizSelectionComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.user = this.userService.getUser();
+        this.quizService.getAllQuizzes(function (err, quizzes) {
+            _this.quizzes = quizzes;
+        });
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -190,9 +205,56 @@ var QuizSelectionComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./quiz-selection.component.html */ "./src/app/home/quiz-selection/quiz-selection.component.html"),
             styles: [__webpack_require__(/*! ./quiz-selection.component.css */ "./src/app/home/quiz-selection/quiz-selection.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_session_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_session_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"]])
     ], QuizSelectionComponent);
     return QuizSelectionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/home/quiz.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/home/quiz.service.ts ***!
+  \**************************************/
+/*! exports provided: QuizService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuizService", function() { return QuizService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var QuizService = /** @class */ (function () {
+    function QuizService(http) {
+        this.http = http;
+    }
+    QuizService.prototype.getAllQuizzes = function (callback) {
+        var quizzes$;
+        quizzes$ = this.http.get("/api/quizzes");
+        quizzes$.subscribe({
+            next: function (data) {
+                console.log(data);
+                callback(null, data);
+            },
+            error: function (err) {
+                console.error(err);
+                callback(err, null);
+            }
+        });
+    };
+    QuizService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], QuizService);
+    return QuizService;
 }());
 
 
