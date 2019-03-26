@@ -211,8 +211,6 @@ var PresentationComponent = /** @class */ (function () {
         this.slug = this.route.snapshot.paramMap.get("slug");
         this.quizService.getQuizDescriptionBySlug(this.slug, function (quiz) { return _this.quiz = quiz; });
     }
-    PresentationComponent.prototype.ngOnInit = function () {
-    };
     PresentationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-presentation',

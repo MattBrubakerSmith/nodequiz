@@ -1,14 +1,23 @@
-<div fxLayout="column">
+<div fxLayout="row">
+  <div fxFlex></div>
   <mat-card>
     <mat-card-title>Quiz Selection</mat-card-title>
-    <mat-card-content>
-      <h2>Welcome to NodeQuiz, <span class="bold">{{ user.firstName }}!</span></h2>
+    <mat-card-content 
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <h2>Welcome to NodeQuiz, {{ user?.firstName }}!</h2>
       <p>Please select an option below to view a presentation and take a quiz!</p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions
+      fxLayout="row"
+      fxLayoutAlign="center start"
+      fxLayoutGap="2%"
+    >
       <button
-        *ngFor="let quiz of quizzes"
-        mat-raised-button
+        *ngFor="let quiz of mockQuizzes"
+        mat-button
+        class="btn"
         [ngClass]="quiz.slug + '-btn'"
         [routerLink]="'/presentations/' + quiz.slug"
       >
@@ -16,4 +25,5 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  <div fxFlex></div>
 </div>

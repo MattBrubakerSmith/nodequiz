@@ -12,6 +12,23 @@ import { Quiz } from '../quiz';
 export class QuizSelectionComponent implements OnInit {
   private user: User;
   private quizzes: [Quiz];
+  private mockQuizzes = [
+    {
+      title: "Enterprise JavaScript",
+      description: "",
+      slug: "enterprise-javascript"
+    },
+    {
+      title: "RESTful APIs",
+      description: "",
+      slug: "restful-apis"
+    },
+    {
+      title: "DevOps",
+      description: "",
+      slug: "devops"
+    }
+  ];
 
   constructor(private userService: UserService, private quizService: QuizService) {}
 
