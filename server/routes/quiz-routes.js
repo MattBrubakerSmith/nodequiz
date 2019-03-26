@@ -28,17 +28,4 @@ router.get("/:slug", (req, res, next) => {
     });
 });
 
-/**
- * @route   GET api/quizzes/description/:slug
- * @desc    Get one quiz description (no questions) by slug
- * @access  Public
- */
-router.get("/description/:slug", (req, res, next) => {
-    Quiz.getQuizDescriptionBySlug(req.params.slug, (err, quiz) => {
-        if(err) return next(err);
-        if(!quiz) return next("No quiz found.");
-        res.json(quiz);
-    });
-});
-
 module.exports = router;
