@@ -1,1 +1,25 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.enterprise-javascript-bg {
+    background-color: green;
+}
+
+.restful-apis-bg {
+    background-color: blue;
+}
+
+.devops-bg {
+    background-color: indigo;
+}
+
+.enterprise-javascript-color {
+    color: green;
+}
+
+.restful-apis-color {
+    color: blue;
+}
+
+.devops-color {
+    color: indigo;
+}

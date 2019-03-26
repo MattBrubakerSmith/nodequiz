@@ -8,18 +8,6 @@ mat-card-content {
     height: 250px;
 }
 
-.enterprise-javascript-btn {
-    background-color: green;
-}
-
-.restful-apis-btn {
-    background-color: blue;
-}
-
-.devops-btn {
-    background-color: indigo;
-}
-
 .btn {
     color: rgba(255,255,255,0.8);
     transition: color 100ms ease-in-out;

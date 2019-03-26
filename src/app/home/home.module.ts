@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule, MatButtonModule } from "@angular/material";
+import { MatCardModule, MatButtonModule, MatDividerModule } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { HomeComponent } from './home.component';
@@ -20,6 +20,7 @@ import { QuizComponent } from './quiz/quiz.component';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
+    MatDividerModule,
     FlexLayoutModule,
     RouterModule.forChild(HomeRoutes),
   ],

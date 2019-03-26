@@ -103,6 +103,7 @@ var HomeModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDividerModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_8__["HomeRoutes"]),
             ],
@@ -170,7 +171,7 @@ var HomeRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcHJlc2VudGF0aW9uL3ByZXNlbnRhdGlvbi5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n}\r\n\r\nmat-divider {\r\n    padding-bottom: 10px;\r\n}\r\n\r\nvideo {\r\n    width: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9wcmVzZW50YXRpb24vcHJlc2VudGF0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osY0FBYztBQUNsQjs7QUFFQTtJQUNJLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcHJlc2VudGF0aW9uL3ByZXNlbnRhdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibWF0LWNhcmQge1xyXG4gICAgd2lkdGg6IDgwMHB4O1xyXG4gICAgbWF4LXdpZHRoOiA5NSU7XHJcbn1cclxuXHJcbm1hdC1kaXZpZGVyIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMHB4O1xyXG59XHJcblxyXG52aWRlbyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -181,7 +182,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div>\n    {{ quiz?.title }}\n  </div>\n  <video controls reload=\"none\">\n    <source src=\"{{'../../../assets/presentations/' + slug + '.mp4'}}\" />\n  </video>\n</div>"
+module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n    <mat-card>\n      <mat-card-title [ngClass]=\"slug + '-color'\">\n        {{ quiz?.title }} Presentation\n      </mat-card-title>\n      <mat-divider inset></mat-divider>\n      <mat-card-content>\n        <p>{{ quiz?.description }}</p>\n        <video controls reload=\"none\">\n          <source src=\"{{'../../../assets/presentations/' + slug + '.mp4'}}\" />\n        </video>\n      </mat-card-content>\n    </mat-card>\n    <mat-card-actions>\n      <button\n        mat-button\n        [ngClass]=\"slug + '-bg'\"\n      >\n        Begin Quiz\n      </button>\n    </mat-card-actions>\n  <div fxFlex></div>\n</div>"
 
 /***/ }),
 
@@ -233,7 +234,7 @@ var PresentationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "mat-card {\r\n    max-width: 800px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9xdWl6LXNlbGVjdGlvbi9xdWl6LXNlbGVjdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9xdWl6LXNlbGVjdGlvbi9xdWl6LXNlbGVjdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibWF0LWNhcmQge1xyXG4gICAgbWF4LXdpZHRoOiA4MDBweDtcclxufSJdfQ== */"
+module.exports = "mat-card {\r\n    max-width: 95%;\r\n    width: 800px;\r\n    margin: 30px 0px;\r\n}\r\n\r\nmat-card-content {\r\n    height: 250px;\r\n}\r\n\r\n.btn {\r\n    color: rgba(255,255,255,0.8);\r\n    transition: color 100ms ease-in-out;\r\n    -webkit-transition: color 100ms ease-in-out;\r\n    -moz-transition: color 100ms ease-in-out;\r\n    -o-transition: color 100ms ease-in-out;\r\n}\r\n\r\n.btn:hover {\r\n    color: white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9xdWl6LXNlbGVjdGlvbi9xdWl6LXNlbGVjdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLFlBQVk7SUFDWixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksNEJBQTRCO0lBQzVCLG1DQUFtQztJQUNuQywyQ0FBMkM7SUFDM0Msd0NBQXdDO0lBQ3hDLHNDQUFzQztBQUMxQzs7QUFFQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9ob21lL3F1aXotc2VsZWN0aW9uL3F1aXotc2VsZWN0aW9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJtYXQtY2FyZCB7XHJcbiAgICBtYXgtd2lkdGg6IDk1JTtcclxuICAgIHdpZHRoOiA4MDBweDtcclxuICAgIG1hcmdpbjogMzBweCAwcHg7XHJcbn1cclxuXHJcbm1hdC1jYXJkLWNvbnRlbnQge1xyXG4gICAgaGVpZ2h0OiAyNTBweDtcclxufVxyXG5cclxuLmJ0biB7XHJcbiAgICBjb2xvcjogcmdiYSgyNTUsMjU1LDI1NSwwLjgpO1xyXG4gICAgdHJhbnNpdGlvbjogY29sb3IgMTAwbXMgZWFzZS1pbi1vdXQ7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGNvbG9yIDEwMG1zIGVhc2UtaW4tb3V0O1xyXG4gICAgLW1vei10cmFuc2l0aW9uOiBjb2xvciAxMDBtcyBlYXNlLWluLW91dDtcclxuICAgIC1vLXRyYW5zaXRpb246IGNvbG9yIDEwMG1zIGVhc2UtaW4tb3V0O1xyXG59XHJcblxyXG4uYnRuOmhvdmVyIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -244,7 +245,7 @@ module.exports = "mat-card {\r\n    max-width: 800px;\r\n}\r\n/*# sourceMappingU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\">\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content>\r\n      <h2>Welcome to NodeQuiz, <span class=\"bold\">{{ user.firstName }}!</span></h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions>\r\n      <button\r\n        *ngFor=\"let quiz of quizzes\"\r\n        mat-raised-button\r\n        [ngClass]=\"quiz.slug + '-btn'\"\r\n        [routerLink]=\"'/presentations/' + quiz.slug\"\r\n      >\r\n        {{ quiz.title }}\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div fxLayout=\"row\">\r\n  <div fxFlex></div>\r\n  <mat-card>\r\n    <mat-card-title>Quiz Selection</mat-card-title>\r\n    <mat-card-content \r\n      fxLayout=\"column\"\r\n      fxLayoutAlign=\"center center\"\r\n    >\r\n      <h2>Welcome to NodeQuiz, {{ user?.firstName }}!</h2>\r\n      <p>Please select an option below to view a presentation and take a quiz!</p>\r\n    </mat-card-content>\r\n    <mat-card-actions\r\n      fxLayout=\"row\"\r\n      fxLayoutAlign=\"center start\"\r\n      fxLayoutGap=\"2%\"\r\n    >\r\n      <button\r\n        *ngFor=\"let quiz of mockQuizzes\"\r\n        mat-button\r\n        class=\"btn\"\r\n        [ngClass]=\"quiz.slug + '-bg'\"\r\n        [routerLink]=\"'/presentations/' + quiz.slug\"\r\n      >\r\n        {{ quiz.title }}\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n  <div fxFlex></div>\r\n</div>"
 
 /***/ }),
 
@@ -270,6 +271,23 @@ var QuizSelectionComponent = /** @class */ (function () {
     function QuizSelectionComponent(userService, quizService) {
         this.userService = userService;
         this.quizService = quizService;
+        this.mockQuizzes = [
+            {
+                title: "Enterprise JavaScript",
+                description: "",
+                slug: "enterprise-javascript"
+            },
+            {
+                title: "RESTful APIs",
+                description: "",
+                slug: "restful-apis"
+            },
+            {
+                title: "DevOps",
+                description: "",
+                slug: "devops"
+            }
+        ];
     }
     QuizSelectionComponent.prototype.ngOnInit = function () {
         var _this = this;

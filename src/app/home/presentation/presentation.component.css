@@ -1,0 +1,12 @@
+mat-card {
+    width: 800px;
+    max-width: 95%;
+}
+
+mat-divider {
+    padding-bottom: 10px;
+}
+
+video {
+    width: 100%;
+}

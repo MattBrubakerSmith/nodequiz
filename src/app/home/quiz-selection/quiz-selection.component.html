@@ -18,7 +18,7 @@
         *ngFor="let quiz of mockQuizzes"
         mat-button
         class="btn"
-        [ngClass]="quiz.slug + '-btn'"
+        [ngClass]="quiz.slug + '-bg'"
         [routerLink]="'/presentations/' + quiz.slug"
       >
         {{ quiz.title }}
