@@ -12,6 +12,7 @@ const cors = require('cors');
 const createError = require('http-errors');
 const config = require('./config');
 const userRoutes = require("./routes/user-routes");
+const quizRoutes = require("./routes/quiz-routes");
 
 /**
  * MongoDB setup
@@ -44,6 +45,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodequiz')));
  * API Routes
  */
 app.use("/api/users", userRoutes);
+app.use("/api/quizzes", quizRoutes);
 
 /**
  * Invalid API calls request handler
