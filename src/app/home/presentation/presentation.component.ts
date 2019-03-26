@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from '../quiz.service';
 import { Quiz } from '../quiz';
@@ -8,16 +8,12 @@ import { Quiz } from '../quiz';
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.css']
 })
-export class PresentationComponent implements OnInit {
+export class PresentationComponent {
   private slug: String;
   private quiz: Quiz;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) {
     this.slug = this.route.snapshot.paramMap.get("slug");
     this.quizService.getQuizDescriptionBySlug(this.slug, (quiz) => this.quiz = quiz);
-  }
-
-  ngOnInit() {
-    
   }
 }
