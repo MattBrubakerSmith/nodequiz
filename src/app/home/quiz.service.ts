@@ -13,14 +13,17 @@ export class QuizService {
     let quizzes$: Observable<[Quiz]>;
     quizzes$ = this.http.get("/api/quizzes") as Observable<[Quiz]>;
     quizzes$.subscribe({
-      next: data => {
-        console.log(data);
-        callback(null, data as [Quiz]);
-      },
-      error: err => {
-        console.error(err);
-        callback(err, null);
-      }
+      next: data => callback(data as [Quiz]),
+      error: err => console.error(err)
+    });
+  }
+
+  public getQuizBySlug(slug: String, callback: Function) {
+    let quiz$: Observable<Quiz>;
+    quiz$ = this.http.get("/api/quizzes/" + slug) as Observable<Quiz>;
+    quiz$.subscribe({
+      next: data => callback(data as Quiz),
+      error: err => console.error(err)
     });
   }
 }

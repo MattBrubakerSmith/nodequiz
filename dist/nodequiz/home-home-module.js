@@ -77,6 +77,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home.routing */ "./src/app/home/home.routing.ts");
 /* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
 /* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./quiz.service */ "./src/app/home/quiz.service.ts");
+/* harmony import */ var _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./presentation/presentation.component */ "./src/app/home/presentation/presentation.component.ts");
+
 
 
 
@@ -93,7 +95,7 @@ var HomeModule = /** @class */ (function () {
     }
     HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__["QuizSelectionComponent"]],
+            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__["QuizSelectionComponent"], _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__["PresentationComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
@@ -147,6 +149,62 @@ var HomeRoutes = [
 
 /***/ }),
 
+/***/ "./src/app/home/presentation/presentation.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/home/presentation/presentation.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcHJlc2VudGF0aW9uL3ByZXNlbnRhdGlvbi5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/home/presentation/presentation.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/home/presentation/presentation.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  presentation works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/presentation/presentation.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/home/presentation/presentation.component.ts ***!
+  \*************************************************************/
+/*! exports provided: PresentationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PresentationComponent", function() { return PresentationComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var PresentationComponent = /** @class */ (function () {
+    function PresentationComponent() {
+    }
+    PresentationComponent.prototype.ngOnInit = function () {
+    };
+    PresentationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-presentation',
+            template: __webpack_require__(/*! ./presentation.component.html */ "./src/app/home/presentation/presentation.component.html"),
+            styles: [__webpack_require__(/*! ./presentation.component.css */ "./src/app/home/presentation/presentation.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PresentationComponent);
+    return PresentationComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/quiz-selection/quiz-selection.component.css":
 /*!******************************************************************!*\
   !*** ./src/app/home/quiz-selection/quiz-selection.component.css ***!
@@ -195,8 +253,9 @@ var QuizSelectionComponent = /** @class */ (function () {
     QuizSelectionComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = this.userService.getUser();
-        this.quizService.getAllQuizzes(function (err, quizzes) {
-            _this.quizzes = quizzes;
+        this.quizService.getAllQuizzes(function (quizzes) { return _this.quizzes = quizzes; });
+        this.quizService.getQuizBySlug("devops", function (quiz) {
+            console.log(quiz);
         });
     };
     QuizSelectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -239,12 +298,22 @@ var QuizService = /** @class */ (function () {
         quizzes$ = this.http.get("/api/quizzes");
         quizzes$.subscribe({
             next: function (data) {
-                console.log(data);
-                callback(null, data);
+                callback(data);
             },
             error: function (err) {
                 console.error(err);
-                callback(err, null);
+            }
+        });
+    };
+    QuizService.prototype.getQuizBySlug = function (slug, callback) {
+        var quiz$;
+        quiz$ = this.http.get("/api/quizzes/" + slug);
+        quiz$.subscribe({
+            next: function (data) {
+                callback(data);
+            },
+            error: function (err) {
+                console.error(err);
             }
         });
     };

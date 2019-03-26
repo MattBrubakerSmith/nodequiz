@@ -17,8 +17,6 @@ export class QuizSelectionComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getUser();
-    this.quizService.getAllQuizzes((err, quizzes) => {
-      this.quizzes = quizzes;
-    });
+    this.quizService.getAllQuizzes((quizzes) => this.quizzes = quizzes);
   }
 }
