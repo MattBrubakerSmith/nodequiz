@@ -79,6 +79,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./quiz.service */ "./src/app/home/quiz.service.ts");
 /* harmony import */ var _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./presentation/presentation.component */ "./src/app/home/presentation/presentation.component.ts");
 /* harmony import */ var _quiz_quiz_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./quiz/quiz.component */ "./src/app/home/quiz/quiz.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
@@ -101,9 +103,13 @@ var HomeModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_13__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ReactiveFormsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatRadioModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDividerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressBarModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_8__["HomeRoutes"]),
             ],
@@ -182,7 +188,7 @@ module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n}\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n    <mat-card>\n      <mat-card-title [ngClass]=\"slug + '-color'\">\n        {{ quiz?.title }} Presentation\n      </mat-card-title>\n      <mat-divider inset></mat-divider>\n      <mat-card-content>\n        <p>{{ quiz?.description }}</p>\n        <video controls reload=\"none\">\n          <source src=\"{{'../../../assets/presentations/' + slug + '.mp4'}}\" />\n        </video>\n      </mat-card-content>\n      <mat-card-actions\n        fxLayout=\"row\"\n        fxLayoutAlign=\"center start\"\n      >\n        <button\n          mat-button\n          class=\"quiz-btn\"\n          [ngClass]=\"slug + '-bg'\"\n          [routerLink]=\"'/quizzes/' + slug\"\n        >\n          Begin Quiz\n        </button>\n      </mat-card-actions>\n    </mat-card>\n  <div fxFlex></div>\n</div>"
+module.exports = "<div fxLayout=\"row\">\r\n  <div fxFlex></div>\r\n    <mat-card>\r\n      <mat-card-title [ngClass]=\"slug + '-color'\">\r\n        {{ quiz?.title }} Presentation\r\n      </mat-card-title>\r\n      <mat-divider inset></mat-divider>\r\n      <mat-card-content>\r\n        <p>{{ quiz?.description }}</p>\r\n        <video controls reload=\"none\">\r\n          <source src=\"{{'../../../assets/presentations/' + slug + '.mp4'}}\" />\r\n        </video>\r\n      </mat-card-content>\r\n      <mat-card-actions\r\n        fxLayout=\"row\"\r\n        fxLayoutAlign=\"center start\"\r\n      >\r\n        <button\r\n          mat-button\r\n          class=\"quiz-btn\"\r\n          [ngClass]=\"slug + '-bg'\"\r\n          [routerLink]=\"'/quizzes/' + slug\"\r\n        >\r\n          Begin Quiz\r\n        </button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  <div fxFlex></div>\r\n</div>"
 
 /***/ }),
 
@@ -373,7 +379,7 @@ var QuizService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei9xdWl6LmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n    margin: 30px 0px;\r\n}\r\n\r\nmat-card-content {\r\n    min-height: 300px;\r\n}\r\n\r\nmat-card-content label {\r\n    font-size: 1.4em;\r\n    font-weight: 500;\r\n}\r\n\r\nmat-radio-group {\r\n    margin-top: 20px;\r\n}\r\n\r\nmat-radio-button {\r\n    margin-bottom: 10px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9xdWl6L3F1aXouY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLG1CQUFtQjtBQUN2QiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei9xdWl6LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJtYXQtY2FyZCB7XHJcbiAgICB3aWR0aDogODAwcHg7XHJcbiAgICBtYXgtd2lkdGg6IDk1JTtcclxuICAgIG1hcmdpbjogMzBweCAwcHg7XHJcbn1cclxuXHJcbm1hdC1jYXJkLWNvbnRlbnQge1xyXG4gICAgbWluLWhlaWdodDogMzAwcHg7XHJcbn1cclxuXHJcbm1hdC1jYXJkLWNvbnRlbnQgbGFiZWwge1xyXG4gICAgZm9udC1zaXplOiAxLjRlbTtcclxuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbn1cclxuXHJcbm1hdC1yYWRpby1ncm91cCB7XHJcbiAgICBtYXJnaW4tdG9wOiAyMHB4O1xyXG59XHJcblxyXG5tYXQtcmFkaW8tYnV0dG9uIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -384,7 +390,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  {{ slug }} quiz works!\n</p>\n"
+module.exports = "<div fxLayout=\"row\">\r\n  <div fxFlex></div>\r\n  <mat-card\r\n    *ngIf=\"quiz\"\r\n  >\r\n    <mat-card-title>{{ quiz.title }} Quiz</mat-card-title>\r\n    <mat-card-subtitle>\r\n      <mat-progress-bar\r\n        [value]=\"getProgress()\"\r\n      ></mat-progress-bar>\r\n    </mat-card-subtitle>\r\n    <mat-card-content\r\n      fxLayout=\"column\"\r\n      fxLayoutAlign=\"center center\"\r\n    >\r\n      <label id=\"answers-radio-group\">{{ questions[questionIndex].question }}</label>\r\n      <mat-radio-group\r\n        aria-labelledby=\"answers-radio-group\"\r\n        [(ngModel)]=\"selectedAnswers[questionIndex]\"\r\n        fxLayout=\"column\"\r\n      >\r\n        <mat-radio-button\r\n          *ngFor=\"let answer of questions[questionIndex].answers; let i = index\"\r\n          [value]=\"i\"\r\n        >\r\n          <span class=\"i-hate-angular\">{{ answer }}</span>\r\n        </mat-radio-button>\r\n      </mat-radio-group>\r\n    </mat-card-content>\r\n    <mat-card-actions\r\n      fxLayout=\"row\"\r\n      fxLayoutAlign=\"space-between start\"\r\n    >\r\n      <button\r\n        mat-flat-button\r\n        color=\"accent\"\r\n        (click)=\"prevQuestion()\"\r\n        [disabled]=\"questionIndex <= 0\"\r\n      >\r\n        Previous Question\r\n      </button>\r\n      <button\r\n        mat-flat-button\r\n        color=\"primary\"\r\n        (click)=\"submitQuiz()\"\r\n        [disabled]=\"selectedAnswers.includes(null)\"\r\n      >\r\n        Submit Quiz\r\n      </button>\r\n      <button\r\n        mat-flat-button\r\n        color=\"accent\"\r\n        (click)=\"nextQuestion()\"\r\n        [disabled]=\"questionIndex >= questions.length - 1\"\r\n      >\r\n        Next Question\r\n      </button>\r\n    </mat-card-actions>\r\n  </mat-card>\r\n  <div fxFlex></div>\r\n  <style>\r\n    .i-hate-angular {\r\n      white-space: normal;\r\n    }\r\n  </style>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -401,21 +407,68 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quiz.service */ "./src/app/home/quiz.service.ts");
+
 
 
 
 var QuizComponent = /** @class */ (function () {
-    function QuizComponent(route) {
+    function QuizComponent(route, quizService) {
+        var _this = this;
         this.route = route;
+        this.quizService = quizService;
+        this.questionIndex = 0;
+        this.selectedAnswers = [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ];
         this.slug = this.route.snapshot.paramMap.get("slug");
+        this.quizService.getQuizBySlug(this.slug, function (quiz) {
+            _this.quiz = quiz;
+            _this.questions = quiz.questions;
+        });
     }
+    QuizComponent.prototype.nextQuestion = function () {
+        if (this.questionIndex >= this.questions.length - 1)
+            return;
+        this.questionIndex++;
+    };
+    QuizComponent.prototype.prevQuestion = function () {
+        if (this.questionIndex <= 0)
+            return;
+        this.questionIndex--;
+    };
+    QuizComponent.prototype.getProgress = function () {
+        var answerCount = 0;
+        for (var _i = 0, _a = this.selectedAnswers; _i < _a.length; _i++) {
+            var sa = _a[_i];
+            if (sa != null)
+                answerCount++;
+        }
+        return answerCount * 10;
+    };
+    QuizComponent.prototype.submitQuiz = function () {
+        var checkedAnswers = [];
+        for (var i = 0; i < this.questions.length; i++) {
+            checkedAnswers.push(this.questions[i].correctAnswerIndex == this.selectedAnswers[i]);
+        }
+        console.log(checkedAnswers);
+    };
     QuizComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-quiz',
             template: __webpack_require__(/*! ./quiz.component.html */ "./src/app/home/quiz/quiz.component.html"),
             styles: [__webpack_require__(/*! ./quiz.component.css */ "./src/app/home/quiz/quiz.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"]])
     ], QuizComponent);
     return QuizComponent;
 }());

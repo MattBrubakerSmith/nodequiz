@@ -1,3 +1,66 @@
-<p>
-  {{ slug }} quiz works!
-</p>
+<div fxLayout="row">
+  <div fxFlex></div>
+  <mat-card
+    *ngIf="quiz"
+  >
+    <mat-card-title>{{ quiz.title }} Quiz</mat-card-title>
+    <mat-card-subtitle>
+      <mat-progress-bar
+        [value]="getProgress()"
+      ></mat-progress-bar>
+    </mat-card-subtitle>
+    <mat-card-content
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <label id="answers-radio-group">{{ questions[questionIndex].question }}</label>
+      <mat-radio-group
+        aria-labelledby="answers-radio-group"
+        [(ngModel)]="selectedAnswers[questionIndex]"
+        fxLayout="column"
+      >
+        <mat-radio-button
+          *ngFor="let answer of questions[questionIndex].answers; let i = index"
+          [value]="i"
+        >
+          <span class="i-hate-angular">{{ answer }}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+    <mat-card-actions
+      fxLayout="row"
+      fxLayoutAlign="space-between start"
+    >
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="prevQuestion()"
+        [disabled]="questionIndex <= 0"
+      >
+        Previous Question
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="submitQuiz()"
+        [disabled]="selectedAnswers.includes(null)"
+      >
+        Submit Quiz
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="nextQuestion()"
+        [disabled]="questionIndex >= questions.length - 1"
+      >
+        Next Question
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div fxFlex></div>
+  <style>
+    .i-hate-angular {
+      white-space: normal;
+    }
+  </style>
+</div>
