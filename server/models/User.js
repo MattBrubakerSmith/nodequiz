@@ -32,7 +32,7 @@ module.exports.getByUserId = (userId, callback) => {
     User.findOne(query, callback);
 }
 
-module.exports.submitQuizAnswers = (userId, quizId, answers, callback) => {
+module.exports.submitQuizAnswers = (userId, quizId, answers, score, callback) => {
     let query = { userId: userId };
     User.findOne(query, (err, user) => {
         if(err) {
@@ -48,7 +48,8 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, callback) => {
         if(user.quizResults.length <= 0) {
             user.quizResults.push({
                 quizId: quizId,
-                answers: answers
+                answers: answers,
+                score: score
             });
             user.save();
             callback(null, user);
@@ -58,6 +59,7 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, callback) => {
         for(let qr of user.quizResults) {
             if(qr.quizId == quizId) {
                 qr.answers = answers;
+                qr.score = score;
                 user.save();
                 callback(null, user);
                 return;
@@ -66,7 +68,8 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, callback) => {
 
         user.quizResults.push({
             quizId: quizId,
-            answers: answers
+            answers: answers,
+            score: score
         });
         user.save();
         callback(null, user);
