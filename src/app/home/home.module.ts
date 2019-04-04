@@ -13,9 +13,10 @@ import { QuizService } from './quiz.service';
 import { PresentationComponent } from './presentation/presentation.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuizResultsComponent } from './quiz-results/quiz-results.component';
 
 @NgModule({
-  declarations: [HomeComponent, QuizSelectionComponent, PresentationComponent, QuizComponent],
+  declarations: [HomeComponent, QuizSelectionComponent, PresentationComponent, QuizComponent, QuizResultsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
