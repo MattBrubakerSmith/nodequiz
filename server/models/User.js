@@ -46,13 +46,14 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, score, callback) =>
         }
 
         if(user.quizResults.length <= 0) {
-            user.quizResults.push({
+            let quizResults = {
                 quizId: quizId,
                 answers: answers,
                 score: score
-            });
+            };
+            user.quizResults.push(quizResults);
             user.save();
-            callback(null, user);
+            callback(null, quizResults);
             return;
         }
 
@@ -61,17 +62,19 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, score, callback) =>
                 qr.answers = answers;
                 qr.score = score;
                 user.save();
-                callback(null, user);
+                callback(null, qr);
                 return;
             }
         }
 
-        user.quizResults.push({
+        let quizResults = {
             quizId: quizId,
             answers: answers,
             score: score
-        });
+        };
+
+        user.quizResults.push(quizResults);
         user.save();
-        callback(null, user);
+        callback(null, quizResults);
     });
 }

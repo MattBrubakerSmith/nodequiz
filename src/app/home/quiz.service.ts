@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from './quiz';
 import { Observable } from 'rxjs';
+import { QuizResult } from './quiz-result';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,20 @@ export class QuizService {
     quiz$ = this.http.get("/api/quizzes/description/" + slug) as Observable<Quiz>;
     quiz$.subscribe({
       next: data => callback(data as Quiz),
+      error: err => console.error(err)
+    });
+  }
+
+  public submitQuizAnswers(userId: String, quizId:String, answers:[Number], score: Number, callback: Function) { 
+    let quizResult$: Observable<QuizResult>;
+    quizResult$ = this.http.patch("api/users", {
+      userId: userId,
+      quizId: quizId,
+      answers: answers,
+      score: score
+    }) as Observable<QuizResult>;
+    quizResult$.subscribe({
+      next: data => callback(data as QuizResult),
       error: err => console.error(err)
     });
   }
