@@ -80,6 +80,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./presentation/presentation.component */ "./src/app/home/presentation/presentation.component.ts");
 /* harmony import */ var _quiz_quiz_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./quiz/quiz.component */ "./src/app/home/quiz/quiz.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _quiz_results_quiz_results_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./quiz-results/quiz-results.component */ "./src/app/home/quiz-results/quiz-results.component.ts");
+
 
 
 
@@ -99,7 +101,7 @@ var HomeModule = /** @class */ (function () {
     }
     HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__["QuizSelectionComponent"], _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__["PresentationComponent"], _quiz_quiz_component__WEBPACK_IMPORTED_MODULE_12__["QuizComponent"]],
+            declarations: [_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_9__["QuizSelectionComponent"], _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_11__["PresentationComponent"], _quiz_quiz_component__WEBPACK_IMPORTED_MODULE_12__["QuizComponent"], _quiz_results_quiz_results_component__WEBPACK_IMPORTED_MODULE_14__["QuizResultsComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
@@ -233,6 +235,62 @@ var PresentationComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/home/quiz-results/quiz-results.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/home/quiz-results/quiz-results.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei1yZXN1bHRzL3F1aXotcmVzdWx0cy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/home/quiz-results/quiz-results.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/home/quiz-results/quiz-results.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  quiz-results works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/quiz-results/quiz-results.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/home/quiz-results/quiz-results.component.ts ***!
+  \*************************************************************/
+/*! exports provided: QuizResultsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuizResultsComponent", function() { return QuizResultsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var QuizResultsComponent = /** @class */ (function () {
+    function QuizResultsComponent() {
+    }
+    QuizResultsComponent.prototype.ngOnInit = function () {
+    };
+    QuizResultsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-quiz-results',
+            template: __webpack_require__(/*! ./quiz-results.component.html */ "./src/app/home/quiz-results/quiz-results.component.html"),
+            styles: [__webpack_require__(/*! ./quiz-results.component.css */ "./src/app/home/quiz-results/quiz-results.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], QuizResultsComponent);
+    return QuizResultsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/quiz-selection/quiz-selection.component.css":
 /*!******************************************************************!*\
   !*** ./src/app/home/quiz-selection/quiz-selection.component.css ***!
@@ -359,6 +417,19 @@ var QuizService = /** @class */ (function () {
             error: function (err) { return console.error(err); }
         });
     };
+    QuizService.prototype.submitQuizAnswers = function (userId, quizId, answers, score, callback) {
+        var quizResult$;
+        quizResult$ = this.http.patch("api/users", {
+            userId: userId,
+            quizId: quizId,
+            answers: answers,
+            score: score
+        });
+        quizResult$.subscribe({
+            next: function (data) { return callback(data); },
+            error: function (err) { return console.error(err); }
+        });
+    };
     QuizService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -408,15 +479,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quiz.service */ "./src/app/home/quiz.service.ts");
+/* harmony import */ var src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/session/user.service */ "./src/app/session/user.service.ts");
+
 
 
 
 
 var QuizComponent = /** @class */ (function () {
-    function QuizComponent(route, quizService) {
+    function QuizComponent(route, quizService, userService) {
         var _this = this;
         this.route = route;
         this.quizService = quizService;
+        this.userService = userService;
         this.questionIndex = 0;
         this.selectedAnswers = [
             null,
@@ -435,6 +509,7 @@ var QuizComponent = /** @class */ (function () {
             _this.quiz = quiz;
             _this.questions = quiz.questions;
         });
+        this.user = this.userService.getUser();
     }
     QuizComponent.prototype.nextQuestion = function () {
         if (this.questionIndex >= this.questions.length - 1)
@@ -456,11 +531,16 @@ var QuizComponent = /** @class */ (function () {
         return answerCount * 10;
     };
     QuizComponent.prototype.submitQuiz = function () {
-        var checkedAnswers = [];
+        var score = 0;
         for (var i = 0; i < this.questions.length; i++) {
-            checkedAnswers.push(this.questions[i].correctAnswerIndex == this.selectedAnswers[i]);
+            if (this.questions[i].correctAnswerIndex == this.selectedAnswers[i])
+                score += 10;
         }
-        console.log(checkedAnswers);
+        var quizResult;
+        this.quizService.submitQuizAnswers(this.user.userId, this.quiz["_id"], this.selectedAnswers, score, function (qr) {
+            quizResult = qr;
+            console.log(quizResult);
+        });
     };
     QuizComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -468,7 +548,7 @@ var QuizComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./quiz.component.html */ "./src/app/home/quiz/quiz.component.html"),
             styles: [__webpack_require__(/*! ./quiz.component.css */ "./src/app/home/quiz/quiz.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"], src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], QuizComponent);
     return QuizComponent;
 }());
