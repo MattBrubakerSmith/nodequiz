@@ -112,6 +112,7 @@ var HomeModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatRadioModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDividerModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressBarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatListModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(_home_routing__WEBPACK_IMPORTED_MODULE_8__["HomeRoutes"]),
             ],
@@ -259,7 +260,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n  <mat-card\n    *ngIf=\"quizResult\"\n  >\n    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>\n    <mat-card-content>\n      {{ quizResult.score }}\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
+module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n  <mat-card\n    *ngIf=\"quizResult\"\n  >\n    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>\n    <mat-card-content>\n      <mat-list role=\"list\">\n        <mat-list-item\n          *ngFor=\"let question of quiz.questions; let i = index\"\n        >\n          Question {{ i + 1 }}: {{ question.correctAnswerIndex == quizResult.answers[i] ? \"&#10004;\" : \"&#x2716;\" }}\n        </mat-list-item>\n      </mat-list>\n      <h4>Score: {{ quizResult.score }}%</h4>\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
 
 /***/ }),
 

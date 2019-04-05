@@ -5,7 +5,14 @@
   >
     <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>
     <mat-card-content>
-      {{ quizResult.score }}
+      <mat-list role="list">
+        <mat-list-item
+          *ngFor="let question of quiz.questions; let i = index"
+        >
+          Question {{ i + 1 }}: {{ question.correctAnswerIndex == quizResult.answers[i] ? "&#10004;" : "&#x2716;" }}
+        </mat-list-item>
+      </mat-list>
+      <h4>Score: {{ quizResult.score }}%</h4>
     </mat-card-content>
   </mat-card>
   <div fxFlex></div>
