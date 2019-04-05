@@ -26,6 +26,10 @@ module.exports.getAllQuizzes = (callback) => {
     Quiz.find({}, { 'title': 1, 'description': 1, 'slug': 1 }, callback);
 }
 
+module.exports.getAllQuizzesWithAnswers = (callback) => {
+    Quiz.find({}, callback);
+}
+
 module.exports.getQuizBySlug = (slug, callback) => {
     Quiz.findOne({ "slug": slug }, callback);
 }

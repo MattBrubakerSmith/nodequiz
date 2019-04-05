@@ -19,6 +19,15 @@ export class QuizService {
     });
   }
 
+  public getAllQuizzesWithAnswers(callback: Function) {
+    let quizzes$: Observable<[Quiz]>;
+    quizzes$ = this.http.get("/api/quizzes/with-answers") as Observable<[Quiz]>;
+    quizzes$.subscribe({
+      next: data => callback(data as [Quiz]),
+      error: err => console.error(err)
+    });
+  }
+
   public getQuizBySlug(slug: String, callback: Function) {
     let quiz$: Observable<Quiz>;
     quiz$ = this.http.get("/api/quizzes/" + slug) as Observable<Quiz>;

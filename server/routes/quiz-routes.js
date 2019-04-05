@@ -16,6 +16,19 @@ router.get("/", (req, res, next) => {
 });
 
 /**
+ * @route   GET api/quizzes/with-answers
+ * @desc    Get all quizzes with answers
+ * @access  Public
+ */
+router.get("/with-answers", (req, res, next) => {
+    Quiz.getAllQuizzesWithAnswers((err, quizzes) => {
+        if(err) return next(err);
+        if(!quizzes) return next("No quizzes found.");
+        res.json(quizzes);
+    });
+});
+
+/**
  * @route   GET api/quizzes/:slug
  * @desc    Get one quiz by slug
  * @access  Public

@@ -984,6 +984,13 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUser = function () {
         return this.storage.get(this.storageKey);
     };
+    UserService.prototype.getAllUsers = function (callback) {
+        var users$ = this.http.get("/api/users", { headers: { 'Content-Type': 'application/json' } });
+        users$.subscribe({
+            next: function (data) { return callback(data); },
+            error: function (err) { return console.error(err); }
+        });
+    };
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'

@@ -35,4 +35,12 @@ export class UserService {
   public getUser(): User {
     return this.storage.get(this.storageKey) as User;
   }
+
+  public getAllUsers(callback: Function) {
+    let users$: Observable<[User]> = this.http.get("/api/users", { headers: { 'Content-Type': 'application/json' } }) as Observable<[User]>;
+    users$.subscribe({
+      next: data => callback(data as [User]),
+      error: err => console.error(err)
+    });
+  }
 }

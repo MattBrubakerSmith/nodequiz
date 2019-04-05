@@ -4,6 +4,7 @@ import { QuizSelectionComponent } from './quiz-selection/quiz-selection.componen
 import { PresentationComponent } from './presentation/presentation.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizResultsComponent } from './quiz-results/quiz-results.component';
+import { CumulativeQuizResultsComponent } from './cumulative-quiz-results/cumulative-quiz-results.component';
 
 export const HomeRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ export const HomeRoutes: Routes = [
       {
         path: 'quiz-results/:slug',
         component: QuizResultsComponent
+      },
+      {
+        path: 'cumulative-results',
+        component: CumulativeQuizResultsComponent
       }
     ]
   }
