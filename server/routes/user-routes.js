@@ -28,4 +28,17 @@ router.patch("/", (req, res, next) => {
     });
 });
 
+/**
+ * @route   GET api/users
+ * @desc    Get all users
+ * @access  Public
+ */
+router.get("/", (req, res, next) => {
+    User.getAllUsers((err, users) => {
+        if(err) return next(err);
+        if(!users) return next("No users found.");
+        res.json(users);
+    });
+});
+
 module.exports = router;

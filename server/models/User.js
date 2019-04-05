@@ -78,3 +78,7 @@ module.exports.submitQuizAnswers = (userId, quizId, answers, score, callback) =>
         callback(null, quizResults);
     });
 }
+
+module.exports.getAllUsers = callback => {
+    User.find({}, callback);
+}
