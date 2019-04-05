@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
 import { Quiz } from '../quiz';
 import { Question } from '../question';
 import { UserService } from 'src/app/session/user.service';
 import { User } from 'src/app/session/user';
-import { QuizResult } from '../quiz-result';
 
 @Component({
   selector: 'app-quiz',
@@ -31,7 +30,7 @@ export class QuizComponent {
     null
   ];
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private userService: UserService, private router: Router) {
     this.slug = this.route.snapshot.paramMap.get("slug");
     this.quizService.getQuizBySlug(this.slug, (quiz) => {
       this.quiz = quiz;
@@ -63,10 +62,11 @@ export class QuizComponent {
     for(let i = 0; i < this.questions.length; i++) {
       if(this.questions[i].correctAnswerIndex == this.selectedAnswers[i]) score += 10;
     }
-    let quizResult: QuizResult;
     this.quizService.submitQuizAnswers(this.user.userId, this.quiz["_id"], this.selectedAnswers as [Number], score, qr => {
-      quizResult = qr;
-      console.log(quizResult);
+      console.log(qr);
+      this.userService.loginUser(this.user.userId, success => {
+        if(success) this.router.navigate(["/quiz-results/" + this.slug]);
+      })
     });
   }
 }

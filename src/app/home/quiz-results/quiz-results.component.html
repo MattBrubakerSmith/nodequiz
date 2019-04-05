@@ -1,3 +1,12 @@
-<p>
-  quiz-results works!
-</p>
+<div fxLayout="row">
+  <div fxFlex></div>
+  <mat-card
+    *ngIf="quizResult"
+  >
+    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>
+    <mat-card-content>
+      {{ quizResult.score }}
+    </mat-card-content>
+  </mat-card>
+  <div fxFlex></div>
+</div>

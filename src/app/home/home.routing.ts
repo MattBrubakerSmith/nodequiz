@@ -3,6 +3,7 @@ import {HomeComponent} from './home.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { QuizResultsComponent } from './quiz-results/quiz-results.component';
 
 export const HomeRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ export const HomeRoutes: Routes = [
       {
         path: 'presentations/:slug',
         component: PresentationComponent
+      },
+      {
+        path: 'quiz-results/:slug',
+        component: QuizResultsComponent
       }
     ]
   }

@@ -141,6 +141,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _quiz_selection_quiz_selection_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./quiz-selection/quiz-selection.component */ "./src/app/home/quiz-selection/quiz-selection.component.ts");
 /* harmony import */ var _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./presentation/presentation.component */ "./src/app/home/presentation/presentation.component.ts");
 /* harmony import */ var _quiz_quiz_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./quiz/quiz.component */ "./src/app/home/quiz/quiz.component.ts");
+/* harmony import */ var _quiz_results_quiz_results_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./quiz-results/quiz-results.component */ "./src/app/home/quiz-results/quiz-results.component.ts");
+
 
 
 
@@ -164,6 +166,10 @@ var HomeRoutes = [
             {
                 path: 'presentations/:slug',
                 component: _presentation_presentation_component__WEBPACK_IMPORTED_MODULE_2__["PresentationComponent"]
+            },
+            {
+                path: 'quiz-results/:slug',
+                component: _quiz_results_quiz_results_component__WEBPACK_IMPORTED_MODULE_4__["QuizResultsComponent"]
             }
         ]
     }
@@ -253,7 +259,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  quiz-results works!\n</p>\n"
+module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n  <mat-card\n    *ngIf=\"quizResult\"\n  >\n    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>\n    <mat-card-content>\n      {{ quizResult.score }}\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
 
 /***/ }),
 
@@ -269,20 +275,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuizResultsComponent", function() { return QuizResultsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _quiz_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quiz.service */ "./src/app/home/quiz.service.ts");
+/* harmony import */ var src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/session/user.service */ "./src/app/session/user.service.ts");
+
+
+
 
 
 var QuizResultsComponent = /** @class */ (function () {
-    function QuizResultsComponent() {
+    function QuizResultsComponent(route, quizService, userService) {
+        var _this = this;
+        this.route = route;
+        this.quizService = quizService;
+        this.userService = userService;
+        this.user = this.userService.getUser();
+        var slug = this.route.snapshot.paramMap.get("slug");
+        this.quizService.getQuizBySlug(slug, function (quiz) {
+            _this.quiz = quiz;
+            var quizId = _this.quiz["_id"];
+            for (var _i = 0, _a = _this.user["quizResults"]; _i < _a.length; _i++) {
+                var qr = _a[_i];
+                if (qr.quizId == quizId) {
+                    _this.quizResult = qr;
+                }
+            }
+        });
     }
-    QuizResultsComponent.prototype.ngOnInit = function () {
-    };
     QuizResultsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-quiz-results',
             template: __webpack_require__(/*! ./quiz-results.component.html */ "./src/app/home/quiz-results/quiz-results.component.html"),
             styles: [__webpack_require__(/*! ./quiz-results.component.css */ "./src/app/home/quiz-results/quiz-results.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"], src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], QuizResultsComponent);
     return QuizResultsComponent;
 }());
@@ -486,11 +512,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QuizComponent = /** @class */ (function () {
-    function QuizComponent(route, quizService, userService) {
+    function QuizComponent(route, quizService, userService, router) {
         var _this = this;
         this.route = route;
         this.quizService = quizService;
         this.userService = userService;
+        this.router = router;
         this.questionIndex = 0;
         this.selectedAnswers = [
             null,
@@ -531,15 +558,18 @@ var QuizComponent = /** @class */ (function () {
         return answerCount * 10;
     };
     QuizComponent.prototype.submitQuiz = function () {
+        var _this = this;
         var score = 0;
         for (var i = 0; i < this.questions.length; i++) {
             if (this.questions[i].correctAnswerIndex == this.selectedAnswers[i])
                 score += 10;
         }
-        var quizResult;
         this.quizService.submitQuizAnswers(this.user.userId, this.quiz["_id"], this.selectedAnswers, score, function (qr) {
-            quizResult = qr;
-            console.log(quizResult);
+            console.log(qr);
+            _this.userService.loginUser(_this.user.userId, function (success) {
+                if (success)
+                    _this.router.navigate(["/quiz-results/" + _this.slug]);
+            });
         });
     };
     QuizComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -548,7 +578,7 @@ var QuizComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./quiz.component.html */ "./src/app/home/quiz/quiz.component.html"),
             styles: [__webpack_require__(/*! ./quiz.component.css */ "./src/app/home/quiz/quiz.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"], src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _quiz_service__WEBPACK_IMPORTED_MODULE_3__["QuizService"], src_app_session_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], QuizComponent);
     return QuizComponent;
 }());
