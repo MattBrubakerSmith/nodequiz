@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvY3VtdWxhdGl2ZS1xdWl6LXJlc3VsdHMvY3VtdWxhdGl2ZS1xdWl6LXJlc3VsdHMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n    margin: 30px 0px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9jdW11bGF0aXZlLXF1aXotcmVzdWx0cy9jdW11bGF0aXZlLXF1aXotcmVzdWx0cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLGNBQWM7SUFDZCxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9ob21lL2N1bXVsYXRpdmUtcXVpei1yZXN1bHRzL2N1bXVsYXRpdmUtcXVpei1yZXN1bHRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJtYXQtY2FyZCB7XHJcbiAgICB3aWR0aDogODAwcHg7XHJcbiAgICBtYXgtd2lkdGg6IDk1JTtcclxuICAgIG1hcmdpbjogMzBweCAwcHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -18,7 +18,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div \n  fxLayout=\"row\"\n  *ngIf=\"users\"\n>\n  <div fxFlex></div>\n  <mat-card\n    *ngFor=\"let user of users\"\n  >\n    <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>\n    <mat-card-content>\n      <div\n        *ngFor=\"let qr of user.quizResults\"\n      >\n        <h3>{{ getQuizById(qr.quizId).title }}</h3>\n        <h4>Score: {{ qr.score }}</h4>\n      </div>\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
+module.exports = "<div \n  *ngIf=\"users\"\n>\n  <div\n    fxLayout=\"row\"\n    *ngFor=\"let user of users\"\n  >\n    <div fxFlex></div>\n    <mat-card>\n      <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>\n      <mat-divider inset></mat-divider>\n      <mat-card-content>\n        <div\n          *ngFor=\"let qr of user.quizResults\"\n        >\n          <h3 [ngClass]=\"getQuizById(qr.quizId).slug + '-color'\">{{ getQuizById(qr.quizId).title }} Quiz</h3>\n          <h4>Score: {{ qr.score }}</h4>\n        </div>\n      </mat-card-content>\n    </mat-card>\n    <div fxFlex></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -327,7 +327,7 @@ var PresentationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei1yZXN1bHRzL3F1aXotcmVzdWx0cy5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n    margin: 30px 0px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9xdWl6LXJlc3VsdHMvcXVpei1yZXN1bHRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osY0FBYztJQUNkLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcXVpei1yZXN1bHRzL3F1aXotcmVzdWx0cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibWF0LWNhcmQge1xyXG4gICAgd2lkdGg6IDgwMHB4O1xyXG4gICAgbWF4LXdpZHRoOiA5NSU7XHJcbiAgICBtYXJnaW46IDMwcHggMHB4O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -338,7 +338,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n  <mat-card\n    *ngIf=\"quizResult\"\n  >\n    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>\n    <mat-card-content>\n      <mat-list role=\"list\">\n        <mat-list-item\n          *ngFor=\"let question of quiz.questions; let i = index\"\n        >\n          Question {{ i + 1 }}: {{ question.correctAnswerIndex == quizResult.answers[i] ? \"&#10004;\" : \"&#x2716;\" }}\n        </mat-list-item>\n      </mat-list>\n      <h4>Score: {{ quizResult.score }}%</h4>\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
+module.exports = "<div fxLayout=\"row\">\n  <div fxFlex></div>\n  <mat-card\n    *ngIf=\"quizResult\"\n  >\n    <mat-card-title [ngClass]=\"quiz.slug + '-color'\">{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>\n    <mat-card-content>\n      <mat-list \n        role=\"list\"\n        fxLayout=\"column\"\n      >\n        <mat-list-item\n          *ngFor=\"let question of quiz.questions; let i = index\"\n          fxFlex=\"50%\"\n        >\n          Question {{ i + 1 }}: {{ question.correctAnswerIndex == quizResult.answers[i] ? \"&#10004;\" : \"&#x2716;\" }}\n        </mat-list-item>\n      </mat-list>\n      <h4>Score: {{ quizResult.score }}%</h4>\n    </mat-card-content>\n  </mat-card>\n  <div fxFlex></div>\n</div>"
 
 /***/ }),
 

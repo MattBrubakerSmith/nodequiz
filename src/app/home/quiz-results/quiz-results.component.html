@@ -3,11 +3,15 @@
   <mat-card
     *ngIf="quizResult"
   >
-    <mat-card-title>{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>
+    <mat-card-title [ngClass]="quiz.slug + '-color'">{{ quiz.title }} Quiz Results for {{ user.firstName }} {{ user.lastName }}</mat-card-title>
     <mat-card-content>
-      <mat-list role="list">
+      <mat-list 
+        role="list"
+        fxLayout="column"
+      >
         <mat-list-item
           *ngFor="let question of quiz.questions; let i = index"
+          fxFlex="50%"
         >
           Question {{ i + 1 }}: {{ question.correctAnswerIndex == quizResult.answers[i] ? "&#10004;" : "&#x2716;" }}
         </mat-list-item>

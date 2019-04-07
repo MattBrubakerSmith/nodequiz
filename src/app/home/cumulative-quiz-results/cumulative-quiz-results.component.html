@@ -1,20 +1,23 @@
 <div 
-  fxLayout="row"
   *ngIf="users"
 >
-  <div fxFlex></div>
-  <mat-card
+  <div
+    fxLayout="row"
     *ngFor="let user of users"
   >
-    <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>
-    <mat-card-content>
-      <div
-        *ngFor="let qr of user.quizResults"
-      >
-        <h3>{{ getQuizById(qr.quizId).title }} Quiz</h3>
-        <h4>Score: {{ qr.score }}</h4>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <div fxFlex></div>
+    <div fxFlex></div>
+    <mat-card>
+      <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+        <div
+          *ngFor="let qr of user.quizResults"
+        >
+          <h3 [ngClass]="getQuizById(qr.quizId).slug + '-color'">{{ getQuizById(qr.quizId).title }} Quiz:</h3>
+          <h4>Score: {{ qr.score }}</h4>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div fxFlex></div>
+  </div>
 </div>
