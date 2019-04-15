@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev": "concurrently \"npm run start-ui\" \"npm run start-api-nodemon\"",
-    "postinstall": "ng build --prod",
+    "postinstall": "ng build",
     "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript"
   },
   "private": true,
