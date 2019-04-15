@@ -11,15 +11,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "concurrently \"npm run start-ui\" \"npm run start-api-nodemon\"",
-    "postinstall": "ng build --prod",
-    "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript"
+    "dev": "concurrently \"npm run start-ui\" \"npm run start-api-nodemon\""
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.8",
     "@angular/cdk": "^7.3.4",
     "@angular/cli": "~7.3.5",
+    "@angular/compiler-cli": "~7.2.0",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
     "@angular/core": "~7.2.0",
@@ -40,11 +39,11 @@
     "ngx-webstorage-service": "^4.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "typescript": "~3.2.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
-    "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
@@ -61,8 +60,7 @@
     "nodemon": "^1.18.10",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "tslint": "~5.11.0"
   },
   "engines": {
     "node": "8.12.0",
