@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node ./server/app.js",
+    "start": "ng build --prod",
     "start-ui": "ng serve",
     "start-api": "node ./server/app.js",
     "start-api-nodemon": "nodemon ./server/app.js",
