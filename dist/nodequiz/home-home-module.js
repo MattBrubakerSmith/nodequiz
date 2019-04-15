@@ -18,7 +18,7 @@ module.exports = "mat-card {\r\n    width: 800px;\r\n    max-width: 95%;\r\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div \n  *ngIf=\"users\"\n>\n  <div\n    fxLayout=\"row\"\n    *ngFor=\"let user of users\"\n  >\n    <div fxFlex></div>\n    <mat-card>\n      <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>\n      <mat-divider inset></mat-divider>\n      <mat-card-content>\n        <div\n          *ngFor=\"let qr of user.quizResults\"\n        >\n          <h3 [ngClass]=\"getQuizById(qr.quizId).slug + '-color'\">{{ getQuizById(qr.quizId).title }} Quiz</h3>\n          <h4>Score: {{ qr.score }}</h4>\n        </div>\n      </mat-card-content>\n    </mat-card>\n    <div fxFlex></div>\n  </div>\n</div>"
+module.exports = "<div \n  *ngIf=\"users\"\n>\n  <div\n    fxLayout=\"row\"\n    *ngFor=\"let user of users\"\n  >\n    <div fxFlex></div>\n    <mat-card>\n      <mat-card-title>{{ user.firstName }} {{ user.lastName }} Quiz Results</mat-card-title>\n      <mat-divider inset></mat-divider>\n      <mat-card-content>\n        <div\n          *ngFor=\"let qr of user.quizResults\"\n        >\n          <h3 [ngClass]=\"getQuizById(qr.quizId).slug + '-color'\">{{ getQuizById(qr.quizId).title }} Quiz:</h3>\n          <h4>Score: {{ qr.score }}</h4>\n        </div>\n      </mat-card-content>\n    </mat-card>\n    <div fxFlex></div>\n  </div>\n</div>"
 
 /***/ }),
 

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule, MatDividerModule } from '@angular/material';
 
 import { CumulativeQuizResultsComponent } from './cumulative-quiz-results.component';
+import { QuizService } from '../quiz.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CumulativeQuizResultsComponent', () => {
   let component: CumulativeQuizResultsComponent;
@@ -8,7 +11,15 @@ describe('CumulativeQuizResultsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CumulativeQuizResultsComponent ]
+      declarations: [ CumulativeQuizResultsComponent ],
+      imports: [
+        MatCardModule,
+        MatDividerModule,
+        HttpClientModule
+      ],
+      providers: [
+        QuizService
+      ]
     })
     .compileComponents();
   }));
